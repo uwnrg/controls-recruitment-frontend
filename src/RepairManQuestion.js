@@ -40,7 +40,7 @@ export default class RepairManQuestion extends React.Component {
                 <p>
                     You can change the array and vector to whichever array and list types are available 
                     in your language of choice, e.g. <code>int[] spare_parts_needed</code> and 
-                    <code>List<Integer></code> in Java. If you're not familiar with lists, 
+                    <code>{"List<Integer>"}</code> in Java. If you're not familiar with lists, 
                     use an array with size <code>2 * num_robots</code>.
                 </p>
             </CodeQuestion>

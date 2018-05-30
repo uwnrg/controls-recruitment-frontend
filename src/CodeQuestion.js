@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 import AceEditor from 'react-ace';
 
@@ -20,21 +20,28 @@ export default class CodeQuestion extends React.Component {
         super(props, context);
 
         this.languageChanged = this.languageChanged.bind(this);
-        this.contentChange = this.contentChange.bind(this);
+        this.onLoad = this.onLoad.bind(this);
+        this.resetCode = this.resetCode.bind(this);
 
         this.state = {
             mode: 'c_cpp'
         };
 
-        this.content = "";
+        this.editor = null;
     }
 
     languageChanged(e) {
         this.setState({ mode: e.target.value });
     }
 
-    contentChange(newValue) {
-        this.content = newValue;
+    onLoad(instance) {
+        this.editor = instance;
+    }
+
+    resetCode() {
+        if (this.editor) {
+            this.editor.setValue(this.props.codePlaceholder, 1);
+        }
     }
 
     render() {
@@ -59,6 +66,12 @@ export default class CodeQuestion extends React.Component {
                             <option value="ruby">Ruby</option>
                         </FormControl>
                     </FormGroup>
+                    <Button
+                        bsStyle="danger"
+                        bsSize="small"
+                        style={{ paddingRight: 20, paddingLeft: 20 }}
+                        onClick={this.resetCode}
+                    >Reset</Button>
                 </div>
                 <div className="col-sm-10">
                     <AceEditor
@@ -68,15 +81,16 @@ export default class CodeQuestion extends React.Component {
                         theme="monokai"
                         name={this.props.formId}
                         onLoad={this.onLoad}
-                        onChange={this.contentChange}
+                        onChange={this.onChange}
                         fontSize={14}
                         showPrintMargin={true}
                         showGutter={true}
                         highlightActiveLine={true}
                         value={this.props.codePlaceholder}
+                        editorProps={{$blockScrolling: true}}
                         setOptions={{
                             showLineNumbers: true,
-                            tabSize: 4,
+                            tabSize: 4
                         }}
                     />
                 </div>
