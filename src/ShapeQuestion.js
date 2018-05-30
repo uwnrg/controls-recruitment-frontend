@@ -12,6 +12,16 @@ const codeStr =
     "}\n";
 
 export default class ShapeQuestion extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.getValue = this.getValue.bind(this);
+    }
+
+    getValue() {
+        return this._r ? this._r.getValue() : "";
+    }
+
     render() {
         return (
             <CodeQuestion

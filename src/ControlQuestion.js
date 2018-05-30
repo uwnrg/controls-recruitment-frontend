@@ -2,9 +2,20 @@ import React from 'react';
 import CodeQuestion from './CodeQuestion';
 
 export default class ControlQuestion extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.getValue = this.getValue.bind(this);
+    }
+
+    getValue() {
+        return this._r ? this._r.getValue() : "";
+    }
+
     render() {
         return (
             <CodeQuestion
+                ref={(r) => { this._r = r; }}
                 codePlaceholder={"void control_loop(double target_x, double target_y) {\n    /* move robot */\n}\n"}
                 formId="controlQuestion"
             >
