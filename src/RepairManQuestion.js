@@ -4,7 +4,7 @@ import CodeQuestion from './CodeQuestion';
 const codeStr =
     "#include <vector>\n" +
     "\n" +
-    "std::vector<int> repair_order(int num_robots, int* spare_parts_needed) {\n" +
+    "std::vector<int> repair_order(int num_robots, int *spare_parts_needed) {\n" +
     "    /* determine an optimal repair order */\n" +
     "}\n";
 
@@ -36,6 +36,11 @@ export default class RepairManQuestion extends React.Component {
                     six robots with <code>{"spare_parts_needed = {20, 20, 20, 20, 10, 10}"}</code> can be repaired left-to-right
                     <code>{"{1, 2, 0, 3, 4, 0, 5, 6}"}</code> for a total of 18 meters or <code>{"{1, 2, 5, 0, 3, 4, 6}"}</code>
                     for a total of 16 meters travelled.
+                </p>
+                <p>
+                    You can chsnge the array and vector to whichever array and list types are available 
+                    in your language of choice, e.g. <code>int[] spare_parts_needed</code> and 
+                    <code>List<Integer></code> in Java.
                 </p>
             </CodeQuestion>
         );
