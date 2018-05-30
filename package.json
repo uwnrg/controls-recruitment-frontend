@@ -7,7 +7,8 @@
     "react-ace": "^6.1.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-toastify": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -16,15 +16,26 @@ export default class ShapeQuestion extends React.Component {
         super(props, context);
 
         this.getValue = this.getValue.bind(this);
+        this.setValue = this.setValue.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
     getValue() {
         return this._r ? this._r.getValue() : "";
     }
 
+    setValue(content) {
+        if (this._r) { this._r.setValue(content); }
+    }
+
+    reset() {
+        if (this._r) {this._r.resetCode(); }
+    }
+
     render() {
         return (
             <CodeQuestion
+                ref={(r) => { this._r = r; }}
                 codePlaceholder={codeStr}
                 formId="shapeQuestion"
                 codeHeight={600}
@@ -54,15 +65,15 @@ export default class ShapeQuestion extends React.Component {
                     <code>void shape_move(int[] x_values, int[] y_values)</code> in Java.
                 </p>
                 <p>
-                    The second function, <code>void move_triangle(double x_center, double y_center, double length)</code>, 
+                    The second function, <code>void move_triangle(double x_center, double y_center, double length)</code>,
                     should use <code>shape_move</code> to move the robot <b>clockwise</b> through
                     the vertices of an upright equilateral triangle, centered at <code>(x_center, y_center)</code> with side
                     length <code>length</code> starting at the top (see diagram).
                 </p>
-                    <div style={{ textAlign: "center" }}>
-                        <img src={triangle} alt="upright-triangle" style={{ height: 300 }} />
-                    </div>
+                <div style={{ textAlign: "center" }}>
+                    <img src={triangle} alt="upright-triangle" style={{ height: 300 }} />
+                </div>
             </CodeQuestion>
-                );
+        );
     }
 }

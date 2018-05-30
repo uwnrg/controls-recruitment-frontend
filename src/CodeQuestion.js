@@ -23,6 +23,7 @@ export default class CodeQuestion extends React.Component {
         this.onLoad = this.onLoad.bind(this);
         this.resetCode = this.resetCode.bind(this);
         this.getValue = this.getValue.bind(this);
+        this.setValue = this.setValue.bind(this);
 
         this.state = {
             mode: 'c_cpp'
@@ -47,6 +48,10 @@ export default class CodeQuestion extends React.Component {
 
     getValue() {
         return this.editor ? this.editor.getValue() : "";
+    }
+
+    setValue(content) {
+        if (this.editor) { this.editor.setValue(content, 1); }
     }
 
     render() {

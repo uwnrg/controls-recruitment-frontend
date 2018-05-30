@@ -9,9 +9,30 @@ const codeStr =
     "}\n";
 
 export default class RepairManQuestion extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.getValue = this.getValue.bind(this);
+        this.setValue = this.setValue.bind(this);
+        this.reset = this.reset.bind(this);
+    }
+
+    getValue() {
+        return this._r ? this._r.getValue() : "";
+    }
+
+    setValue(content) {
+        if (this._r) { this._r.setValue(content); }
+    }
+
+    reset() {
+        if (this._r) {this._r.resetCode(); }
+    }
+
     render() {
         return (
             <CodeQuestion
+                ref={(r) => { this._r = r; }}
                 codePlaceholder={codeStr}
                 formId="repairManQuestion"
                 codeHeight={800}
@@ -21,7 +42,7 @@ export default class RepairManQuestion extends React.Component {
                     along a line in his (very long) garage. Jimmy starts one meter to the left of the first robot, where he
                     keeps his stash of spare parts. Jimmy needs spare parts to repair his robots, but he can
                     only carry <b>50 at a time</b>. Each of the robots requires a certain number of parts to repair, but each
-                    number will be less than or equal to 50. These are given in the array <code>spare_parts_needed</code>. 
+                    number will be less than or equal to 50. These are given in the array <code>spare_parts_needed</code>.
                     Jimmy can resupply his parts by returning to his start position.
                 </p>
                 <p>
@@ -38,9 +59,9 @@ export default class RepairManQuestion extends React.Component {
                     for a total of 16 meters travelled.
                 </p>
                 <p>
-                    You can change the array and vector to whichever array and list types are available 
-                    in your language of choice, e.g. <code>int[] spare_parts_needed</code> and 
-                    <code>{"List<Integer>"}</code> in Java. If you're not familiar with lists, 
+                    You can change the array and vector to whichever array and list types are available
+                    in your language of choice, e.g. <code>int[] spare_parts_needed</code> and
+                    <code>{"List<Integer>"}</code> in Java. If you're not familiar with lists,
                     use an array with size <code>2 * num_robots</code>.
                 </p>
             </CodeQuestion>

@@ -6,10 +6,20 @@ export default class ControlQuestion extends React.Component {
         super(props, context);
 
         this.getValue = this.getValue.bind(this);
+        this.setValue = this.setValue.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
     getValue() {
         return this._r ? this._r.getValue() : "";
+    }
+
+    setValue(content) {
+        if (this._r) { this._r.setValue(content); }
+    }
+
+    reset() {
+        if (this._r) {this._r.resetCode(); }
     }
 
     render() {

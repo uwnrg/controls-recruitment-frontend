@@ -5,7 +5,9 @@ export default class GeneralInfo extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.handleChange = this.handleChange.bind(this);
+        this.getValidationState = this.getValidationState.bind(this);
+        this.getJson = this.getJson.bind(this);
+        this.setJson = this.setJson.bind(this);
 
         this.state = {
             value: ''
@@ -16,8 +18,17 @@ export default class GeneralInfo extends React.Component {
         return null;
     }
 
-    handleChange(e) {
-        this.setState({ value: e.target.value });
+    getJson() {
+        const fullName = this.fullName ? this.fullName.value : "";
+        const email = this.email ? this.email.value : "";
+        const yearAndProgram = this.yearAndProgram ? this.yearAndProgram.value : "";
+        return { fullName, email, yearAndProgram };
+    }
+
+    setJson(json) {
+        if (this.fullName) { this.fullName.value = json.fullName || ""; }
+        if (this.email) { this.email.value = json.email || ""; }
+        if (this.yearAndProgram) { this.yearAndProgram.value = json.yearAndProgram || ""; }
     }
 
     render() {
@@ -29,10 +40,9 @@ export default class GeneralInfo extends React.Component {
                 >
                     <ControlLabel>Name</ControlLabel>
                     <FormControl
+                        inputRef={(r) => { this.fullName = r; }}
                         type="text"
                         placeholder="Enter your full name"
-                        value={this.state.value}
-                        onChange={this.handleChange}
                     />
                     <FormControl.Feedback />
                 </FormGroup>
@@ -42,10 +52,9 @@ export default class GeneralInfo extends React.Component {
                 >
                     <ControlLabel>Email</ControlLabel>
                     <FormControl
+                        inputRef={(r) => { this.email = r; }}
                         type="text"
                         placeholder="Enter your email"
-                        value={this.state.value}
-                        onChange={this.handleChange}
                     />
                     <HelpBlock>Please use the same email as in the general application</HelpBlock>
                     <FormControl.Feedback />
@@ -56,10 +65,9 @@ export default class GeneralInfo extends React.Component {
                 >
                     <ControlLabel>Year and Program</ControlLabel>
                     <FormControl
+                        inputRef={(r) => { this.yearAndProgram = r; }}
                         type="text"
                         placeholder="Enter your program"
-                        value={this.state.value}
-                        onChange={this.handleChange}
                     />
                     <HelpBlock>e.g. 1B Software Engineering</HelpBlock>
                     <FormControl.Feedback />
