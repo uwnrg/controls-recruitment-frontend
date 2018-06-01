@@ -79,7 +79,7 @@ export default class CodeQuestion extends React.Component {
                     <Button
                         bsStyle="danger"
                         bsSize="small"
-                        style={{ paddingRight: 20, paddingLeft: 20 }}
+                        style={{ paddingRight: 20, paddingLeft: 20, marginBottom: 20 }}
                         onClick={this.resetCode}
                     >Reset</Button>
                 </div>
