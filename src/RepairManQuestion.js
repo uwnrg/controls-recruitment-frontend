@@ -17,10 +17,10 @@ const templateCode = {
         '}\n',
 
     'java':
+        'import java.util.List\n' +
+        '\n' +
         'class RepairMan {\n' +
-        '    import java.util.List\n' +
-        '    \n' +
-        '    List<Integer> repair_order(int[] spare_parts_needed) {\n' +
+        '    public static List<Integer> repair_order(int[] spare_parts_needed) {\n' +
         '        /* determine an optimized repair order */\n' +
         '    }\n' +
         '}\n',
@@ -38,7 +38,7 @@ const templateCode = {
         'using System.Collections.Generic;\n' +
         '\n' +
         'public class RepairMan {\n' +
-        '    public List<int> repair_order(int num_robots, int[] spare_parts_needed) {\n' +
+        '    public static List<int> repair_order(int[] spare_parts_needed) {\n' +
         '        /* determine an optimized repair order */\n' +
         '    }\n' +
         '}\n',

@@ -28,7 +28,7 @@ const templateCode = {
         '    public static void move_robot(Direction dir);\n' +
         '    */\n' +
         '    \n' +
-        '    void control_loop(double target_x, double target_y) {\n' +
+        '    public static void control_loop(double target_x, double target_y) {\n' +
         '        /* move robot */\n' +
         '    }\n' +
         '}\n',
@@ -56,12 +56,12 @@ const templateCode = {
     'csharp':
         'public class Control {\n' +
         '    /* Function prototypes\n' +
-        '    public double get_robot_x();\n' +
-        '    public double get_robot_y();\n' +
-        '    public void move_robot(Direction dir);\n' +
+        '    public static double get_robot_x();\n' +
+        '    public static double get_robot_y();\n' +
+        '    public static void move_robot(Direction dir);\n' +
         '    */\n' +
         '    \n' +
-        '    public void control_loop(double target_x, double target_y) {\n' +
+        '    public static void control_loop(double target_x, double target_y) {\n' +
         '        /* move robot */\n' +
         '    }\n' +
         '}\n',

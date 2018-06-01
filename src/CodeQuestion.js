@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import tryParseJSON from './tryParseJSON';
 
 import AceEditor from 'react-ace';
 
@@ -44,7 +45,8 @@ export default class CodeQuestion extends React.Component {
 
     resetCode() {
         if (this.editor) {
-            this.editor.setValue(this.props.codePlaceholder[this.state.mode], 1);
+            this.savedValues = {};
+            this.editor.setValue(this.props.codePlaceholder[this.state.mode] || '', 1);
         }
     }
 
@@ -56,7 +58,8 @@ export default class CodeQuestion extends React.Component {
     }
 
     setValue(content) {
-        const value = JSON.parse(content);
+        const value = tryParseJSON(content);
+        if (!value) { return localStorage.clear(); }
         const mode = value.mode;
         if (this.language) this.language.value = mode;
         delete value.mode;
@@ -107,9 +110,10 @@ export default class CodeQuestion extends React.Component {
                         highlightActiveLine={true}
                         value={
                             this.savedValues[this.state.mode] ||
-                            this.props.codePlaceholder[this.state.mode]
+                            this.props.codePlaceholder[this.state.mode] ||
+                            ''
                         }
-                        editorProps={{$blockScrolling: true}}
+                        editorProps={{ $blockScrolling: true }}
                         setOptions={{
                             showLineNumbers: true,
                             tabSize: 4
