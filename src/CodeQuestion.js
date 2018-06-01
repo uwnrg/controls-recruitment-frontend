@@ -30,9 +30,11 @@ export default class CodeQuestion extends React.Component {
         };
 
         this.editor = null;
+        this.savedValues = {};
     }
 
     languageChanged(e) {
+        this.savedValues[this.state.mode] = this.editor ? this.editor.getValue() : '';
         this.setState({ mode: e.target.value });
     }
 
@@ -42,16 +44,24 @@ export default class CodeQuestion extends React.Component {
 
     resetCode() {
         if (this.editor) {
-            this.editor.setValue(this.props.codePlaceholder, 1);
+            this.editor.setValue(this.props.codePlaceholder[this.state.mode], 1);
         }
     }
 
     getValue() {
-        return this.editor ? this.editor.getValue() : "";
+        this.savedValues[this.state.mode] = this.editor ? this.editor.getValue() : '';
+        const value = Object.assign({}, this.savedValues);
+        value.mode = this.state.mode;
+        return JSON.stringify(value);
     }
 
     setValue(content) {
-        if (this.editor) { this.editor.setValue(content, 1); }
+        const value = JSON.parse(content);
+        const mode = value.mode;
+        if (this.language) this.language.value = mode;
+        delete value.mode;
+        this.savedValues = value;
+        this.setState({ mode });
     }
 
     render() {
@@ -63,7 +73,7 @@ export default class CodeQuestion extends React.Component {
                 <div className="col-sm-2">
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Language</ControlLabel>
-                        <FormControl
+                        <FormControl inputRef={(r) => { this.language = r; }}
                             onChange={this.languageChanged}
                             componentClass="select">
                             <option value="c_cpp">C/C++</option>
@@ -72,8 +82,7 @@ export default class CodeQuestion extends React.Component {
                             <option value="golang">Go</option>
                             <option value="csharp">C#</option>
                             <option value="javascript">JavaScript</option>
-                            <option value="typescript">TypeScript</option>
-                            <option value="ruby">Ruby</option>
+                            <option value="ruby">Other</option>
                         </FormControl>
                     </FormGroup>
                     <Button
@@ -96,7 +105,10 @@ export default class CodeQuestion extends React.Component {
                         showPrintMargin={true}
                         showGutter={true}
                         highlightActiveLine={true}
-                        value={this.props.codePlaceholder}
+                        value={
+                            this.savedValues[this.state.mode] ||
+                            this.props.codePlaceholder[this.state.mode]
+                        }
                         editorProps={{$blockScrolling: true}}
                         setOptions={{
                             showLineNumbers: true,

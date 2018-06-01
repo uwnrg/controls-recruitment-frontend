@@ -1,12 +1,47 @@
 import React from 'react';
 import CodeQuestion from './CodeQuestion';
 
-const codeStr =
-    "#include <vector>\n" +
-    "\n" +
-    "std::vector<int> repair_order(int num_robots, int *spare_parts_needed) {\n" +
-    "    /* determine an optimal repair order */\n" +
-    "}\n";
+// c_cpp
+// java
+// python
+// golang
+// csharp
+// javascript
+
+const templateCode = {
+    'c_cpp':
+        '#include <vector>\n' +
+        '\n' +
+        'std::vector<int> repair_order(int num_robots, int *spare_parts_needed) {\n' +
+        '    /* determine an optimized repair order */\n' +
+        '}\n',
+
+    'java':
+        'class RepairMan {\n' +
+        '    import java.util.List\n' +
+        '    \n' +
+        '    List<Integer> repair_order(int[] spare_parts_needed) {\n' +
+        '        /* determine an optimized repair order */\n' +
+        '    }\n' +
+        '}\n',
+
+    'python':
+        'def repair_order(spare_parts_needed):\n' +
+        '    # determine an optimized repair order\n',
+
+    'golang':
+        'func repair_order(spare_parts_needed []int) []int {\n' +
+        '    /* determine an optimized repair order */\n' +
+        '}\n',
+
+    'csharp':
+        '',
+
+    'javascript':
+        'function repair_order(spare_parts_needed) {\n' +
+        '    /* determine an optimized repair order */\n' +
+        '}\n',
+};
 
 export default class RepairManQuestion extends React.Component {
     constructor(props, context) {
@@ -26,14 +61,14 @@ export default class RepairManQuestion extends React.Component {
     }
 
     reset() {
-        if (this._r) {this._r.resetCode(); }
+        if (this._r) { this._r.resetCode(); }
     }
 
     render() {
         return (
             <CodeQuestion
                 ref={(r) => { this._r = r; }}
-                codePlaceholder={codeStr}
+                codePlaceholder={templateCode}
                 formId="repairManQuestion"
                 codeHeight={800}
             >

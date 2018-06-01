@@ -2,6 +2,78 @@ import React from 'react';
 import CodeQuestion from './CodeQuestion';
 import triangle from './triangle.png';
 
+// c_cpp
+// java
+// python
+// golang
+// csharp
+// javascript
+
+const templateCode = {
+    'c_cpp':
+        '// Function prototype\n' +
+        '// void control_loop(double target_x, double target_y);\n' +
+        '\n' +
+        'void shape_move(double *x_values, double *y_values, int num_points) {\n' +
+        '    /* move in shape */\n' +
+        '}\n' +
+        '\n' +
+        'void move_triangle(double x_center, double y_center, double length) {\n' +
+        '    /* move in equilateral triangle */\n' +
+        '}\n',
+
+    'java':
+        'class Shape {\n' +
+        '   // Function prototype\n' +
+        '   // void control_loop(double target_x, double target_y);\n' +
+        '   \n' +
+        '   void shape_move(double[] x_values, double[] y_values) {\n' +
+        '       /* move in shape */\n' +
+        '   }\n' +
+        '   \n' +
+        '   void move_triangle(double x_center, double y_center, double length) {\n' +
+        '       /* move in equilateral triangle */\n' +
+        '   }\n' +
+        '}\n',
+
+    'python':
+        '# Function prototype\n' +
+        '# def control_loop(target_x, target_y)\n' +
+        '\n' +
+        'def shape_move(x_values, y_values):\n' +
+        '    # move in shape\n' +
+        '\n' +
+        'def move_triangle(x_center, y_center, length):\n' +
+        '    # move in equilateral triangle\n',
+
+    'golang':
+        '// Function prototype\n' +
+        '// func control_loop(target_x float64, target_y float64)\n' +
+        '\n' +
+        'func shape_move(x_values []float64, y_values []float64) {\n' +
+        '    /* move in shape*/\n' +
+        '}\n' +
+        '\n' +
+        'func move_triangle(x_center float64, y_center float64, length float64) {\n' +
+        '    /* move in equilateral triangle */\n' +
+        '}\n',
+
+    'csharp':
+        '',
+
+    'javascript':
+        '// Function prototype\n' +
+        '// function control_loop(target_x, target_y);\n' +
+        '\n' +
+        'function shape_move(x_values, y_values) {\n' +
+        '    /* move in shape */\n' +
+        '}\n' +
+        '\n' +
+        'function move_triangle(x_center, y_center, length) {\n' +
+        '    /* move in equilateral triangle */\n' +
+        '}\n',
+};
+
 const codeStr =
     "void shape_move(double *x_values, double *y_values, int num_points) {\n" +
     "    /* move in shape */\n" +
@@ -29,14 +101,14 @@ export default class ShapeQuestion extends React.Component {
     }
 
     reset() {
-        if (this._r) {this._r.resetCode(); }
+        if (this._r) { this._r.resetCode(); }
     }
 
     render() {
         return (
             <CodeQuestion
                 ref={(r) => { this._r = r; }}
-                codePlaceholder={codeStr}
+                codePlaceholder={templateCode}
                 formId="shapeQuestion"
                 codeHeight={600}
             >
@@ -61,8 +133,6 @@ export default class ShapeQuestion extends React.Component {
                 </pre>
                 <p>
                     Will move the robot to the points <code>(1.0, 0.0)</code>, <code>(3.5, -2.1)</code>, and <code>(6.7, 2.0)</code>.
-                    You can change the array types to whichever suits your language of choice. For example,
-                    <code>void shape_move(int[] x_values, int[] y_values)</code> in Java.
                 </p>
                 <p>
                     The second function, <code>void move_triangle(double x_center, double y_center, double length)</code>,

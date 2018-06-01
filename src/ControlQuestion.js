@@ -1,6 +1,73 @@
 import React from 'react';
 import CodeQuestion from './CodeQuestion';
 
+// c_cpp
+// java
+// python
+// golang
+// csharp
+// javascript
+
+const templateCode = {
+    'c_cpp':
+        '/* Function prototypes\n' +
+        'double get_robot_x();\n' +
+        'double get_robot_y()\n' +
+        'void move_robot(Direction dir);\n' +
+        '*/\n' +
+        '\n' +
+        'void control_loop(double target_x, double target_y) {\n' +
+        '    /* move robot */\n' +
+        '}\n',
+
+    'java':
+        'class Control {\n' +
+        '    /* Function prototypes\n' +
+        '    public static double get_robot_x();\n' +
+        '    public static double get_robot_y()\n' +
+        '    public static void move_robot(Direction dir);\n' +
+        '    */\n' +
+        '    \n' +
+        '    void control_loop(double target_x, double target_y) {\n' +
+        '        /* move robot */\n' +
+        '    }\n' +
+        '\n',
+
+    'python':
+        '### Function prototypes\n' +
+        '# def get_robot_x()\n' +
+        '# def get_robot_y()\n' +
+        '# def move_robot(dir)\n' +
+        '\n' +
+        'def control_loop(target_x, target_y):\n' +
+        '    # move robot\n',
+
+    'golang': 
+        '/* Function prototypes\n' +
+        'func get_robot_x() float64\n' +
+        'func get_robot_y() float64\n' +
+        'func move_robot(dir Direction)\n' +
+        '*/\n' +
+        '\n' +    
+        'func control_loop(target_x float64, target_y float64) {\n' +
+        '    /* move robot */\n' +
+        '}\n',
+
+    'csharp':
+        '',
+
+    'javascript':
+        '/* Function prototypes\n' +
+        'function get_robot_x();\n' +
+        'function get_robot_y();\n' +
+        'function move_robot(dir);\n' +
+        '*/\n' +
+        '\n' +
+        'function control_loop(target_x, target_y) {\n' +
+        '    /* move robot */\n' + 
+        '}\n',
+};
+
 export default class ControlQuestion extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -26,7 +93,7 @@ export default class ControlQuestion extends React.Component {
         return (
             <CodeQuestion
                 ref={(r) => { this._r = r; }}
-                codePlaceholder={"void control_loop(double target_x, double target_y) {\n    /* move robot */\n}\n"}
+                codePlaceholder={templateCode}
                 formId="controlQuestion"
             >
                 <p>
