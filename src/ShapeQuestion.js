@@ -27,7 +27,7 @@ const templateCode = {
         '   // Function prototype\n' +
         '   // void control_loop(double target_x, double target_y);\n' +
         '   \n' +
-        '   void shape_move(double[] x_values, double[] y_values, int num_points) {\n' +
+        '   void shape_move(double[] x_values, double[] y_values) {\n' +
         '       /* move in shape */\n' +
         '   }\n' +
         '   \n' +
@@ -40,7 +40,7 @@ const templateCode = {
         '# Function prototype\n' +
         '# def control_loop(target_x, target_y)\n' +
         '\n' +
-        'def shape_move(x_values, y_values, num_points):\n' +
+        'def shape_move(x_values, y_values):\n' +
         '    # move in shape\n' +
         '\n' +
         'def move_triangle(x_center, y_center, length):\n' +
@@ -76,7 +76,7 @@ const templateCode = {
         '// Function prototype\n' +
         '// function control_loop(target_x, target_y);\n' +
         '\n' +
-        'function shape_move(x_values, y_values, num_points) {\n' +
+        'function shape_move(x_values, y_values) {\n' +
         '    /* move in shape */\n' +
         '}\n' +
         '\n' +
