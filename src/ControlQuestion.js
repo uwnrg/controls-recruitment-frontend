@@ -12,7 +12,7 @@ const templateCode = {
     'c_cpp':
         '/* Function prototypes\n' +
         'double get_robot_x();\n' +
-        'double get_robot_y()\n' +
+        'double get_robot_y();\n' +
         'void move_robot(Direction dir);\n' +
         '*/\n' +
         '\n' +
@@ -24,14 +24,14 @@ const templateCode = {
         'class Control {\n' +
         '    /* Function prototypes\n' +
         '    public static double get_robot_x();\n' +
-        '    public static double get_robot_y()\n' +
+        '    public static double get_robot_y();\n' +
         '    public static void move_robot(Direction dir);\n' +
         '    */\n' +
         '    \n' +
         '    void control_loop(double target_x, double target_y) {\n' +
         '        /* move robot */\n' +
         '    }\n' +
-        '\n',
+        '}\n',
 
     'python':
         '### Function prototypes\n' +
@@ -54,7 +54,17 @@ const templateCode = {
         '}\n',
 
     'csharp':
-        '',
+        'public class Control {\n' +
+        '    /* Function prototypes\n' +
+        '    public double get_robot_x();\n' +
+        '    public double get_robot_y();\n' +
+        '    public void move_robot(Direction dir);\n' +
+        '    */\n' +
+        '    \n' +
+        '    public void control_loop(double target_x, double target_y) {\n' +
+        '        /* move robot */\n' +
+        '    }\n' +
+        '}\n',
 
     'javascript':
         '/* Function prototypes\n' +

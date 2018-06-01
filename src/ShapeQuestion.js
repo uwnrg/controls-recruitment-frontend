@@ -59,7 +59,18 @@ const templateCode = {
         '}\n',
 
     'csharp':
-        '',
+        'public class Shape {\n' +
+        '   // Function prototype\n' +
+        '   // void control_loop(double target_x, double target_y);\n' +
+        '   \n' +
+        '   public void shape_move(double[] x_values, double[] y_values, int num_points) {\n' +
+        '       /* move in shape */\n' +
+        '   }\n' +
+        '   \n' +
+        '   public void move_triangle(double x_center, double y_center, double length) {\n' +
+        '       /* move in equilateral triangle */\n' +
+        '   }\n' +
+        '}\n',
 
     'javascript':
         '// Function prototype\n' +
