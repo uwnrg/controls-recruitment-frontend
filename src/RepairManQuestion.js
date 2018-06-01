@@ -35,7 +35,13 @@ const templateCode = {
         '}\n',
 
     'csharp':
-        '',
+        'using System.Collections.Generic;\n' +
+        '\n' +
+        'public class RepairMan {\n' +
+        '    public List<int> repair_order(int num_robots, int[] spare_parts_needed) {\n' +
+        '        /* determine an optimized repair order */\n' +
+        '    }\n' +
+        '}\n',
 
     'javascript':
         'function repair_order(spare_parts_needed) {\n' +
