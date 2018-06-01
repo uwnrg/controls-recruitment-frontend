@@ -25,13 +25,13 @@ const templateCode = {
     'java':
         'class Shape {\n' +
         '   // Function prototype\n' +
-        '   // void control_loop(double target_x, double target_y);\n' +
+        '   // public static void control_loop(double target_x, double target_y);\n' +
         '   \n' +
-        '   void shape_move(double[] x_values, double[] y_values) {\n' +
+        '   public static void shape_move(double[] x_values, double[] y_values) {\n' +
         '       /* move in shape */\n' +
         '   }\n' +
         '   \n' +
-        '   void move_triangle(double x_center, double y_center, double length) {\n' +
+        '   public static void move_triangle(double x_center, double y_center, double length) {\n' +
         '       /* move in equilateral triangle */\n' +
         '   }\n' +
         '}\n',
@@ -61,13 +61,13 @@ const templateCode = {
     'csharp':
         'public class Shape {\n' +
         '   // Function prototype\n' +
-        '   // void control_loop(double target_x, double target_y);\n' +
+        '   // public static void control_loop(double target_x, double target_y);\n' +
         '   \n' +
-        '   public void shape_move(double[] x_values, double[] y_values, int num_points) {\n' +
+        '   public static void shape_move(double[] x_values, double[] y_values) {\n' +
         '       /* move in shape */\n' +
         '   }\n' +
         '   \n' +
-        '   public void move_triangle(double x_center, double y_center, double length) {\n' +
+        '   public static void move_triangle(double x_center, double y_center, double length) {\n' +
         '       /* move in equilateral triangle */\n' +
         '   }\n' +
         '}\n',
@@ -84,15 +84,6 @@ const templateCode = {
         '    /* move in equilateral triangle */\n' +
         '}\n',
 };
-
-const codeStr =
-    "void shape_move(double *x_values, double *y_values, int num_points) {\n" +
-    "    /* move in shape */\n" +
-    "}\n" +
-    "\n" +
-    "void move_triangle(double x_center, double y_center, double length) {\n" +
-    "    /* move in equilateral triangle */\n" +
-    "}\n";
 
 export default class ShapeQuestion extends React.Component {
     constructor(props, context) {
