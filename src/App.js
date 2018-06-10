@@ -42,9 +42,38 @@ class App extends Component {
     constructor(props, context) {
         super(props, context);
 
+        this.submit = this.submit.bind(this);
         this.saveForm = this.saveForm.bind(this);
         this.clearCache = this.clearCache.bind(this);
         this.loadSavedData = this.loadSavedData.bind(this);
+    }
+
+    submit() {
+        const generalInfo = this.generalInfo ? this.generalInfo.getJson() : { fullName: "", email: "", yearAndProgram: "" };
+        const basicQuestions = this.basicQuestions ? this.basicQuestions.getJson() : { codingExperience: "", favoriteLanguage: "", hardestPartCoding: "" };
+        const shapeQuestion = this.shapeQuestion ? JSON.parse(this.shapeQuestion.getValue()) : {};
+        const controlQuestion = this.controlQuestion ? JSON.parse(this.controlQuestion.getValue()) : {};
+        const repairManQuestion = this.repairManQuestion ? JSON.parse(this.repairManQuestion.getValue()) : {};
+        const data = {
+            fullName: generalInfo.fullName,
+            email: generalInfo.email,
+            yearAndProgram: generalInfo.yearAndProgram,
+            favoriteLanguage: basicQuestions.favoriteLanguage,
+            hardestPartCoding: basicQuestions.hardestPartCoding,
+            codingExperience: basicQuestions.codingExperience,
+            shapeQuestion: {
+                language: shapeQuestion.mode,
+                response: shapeQuestion[shapeQuestion.mode],
+            },
+            controlQuestion: {
+                language: controlQuestion.mode,
+                response: controlQuestion[controlQuestion.mode],
+            },
+            repairManQuestion: {
+                language: repairManQuestion.mode,
+                response: repairManQuestion[repairManQuestion.mode],
+            },
+        };
     }
 
     saveForm() {
@@ -161,7 +190,7 @@ class App extends Component {
                                 that's how we will reach out to you. Clicking "Clear Cache" will erase any saved data.
                             </p>
                             <br />
-                            <Button bsStyle="success" style={{ marginRight: 20 }}>Submit</Button>
+                            <Button bsStyle="success" onClick={this.submit} style={{ marginRight: 20 }}>Submit</Button>
                             <Button bsStyle="primary" onClick={this.saveForm}>Save</Button>
                             <Button className="pull-right" bsStyle="danger" onClick={this.clearCache}>Clear Cache</Button>
                         </div>
