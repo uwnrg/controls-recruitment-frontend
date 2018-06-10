@@ -76,6 +76,18 @@ class App extends Component {
             },
             hash: hash.hash,
         };
+        $.ajax({
+            type: 'POST',
+            url: hash.url,
+            data: data,
+            dataType: 'json',
+            error: function (err) {
+                console.log(err);
+            },
+            success: function (msg) {
+                console.log(msg);
+            }
+        })
         toast.success('Application Submitted!', {
             position: "top-right",
             autoClose: 2000,
