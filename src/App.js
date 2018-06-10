@@ -10,6 +10,7 @@ import logo from './uwnrg.png';
 import hash from './hash.json';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+import $ from 'jquery';
 
 function Section(props) {
     return (
