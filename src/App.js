@@ -74,6 +74,14 @@ class App extends Component {
                 response: repairManQuestion[repairManQuestion.mode],
             },
         };
+        toast.success('Application Submit!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false
+        });
     }
 
     saveForm() {
