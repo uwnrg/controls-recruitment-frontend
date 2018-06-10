@@ -7,6 +7,7 @@ import ShapeQuestion from './ShapeQuestion';
 import RepairManQuestion from './RepairManQuestion';
 import ControlQuestion from './ControlQuestion';
 import logo from './uwnrg.png';
+import hash from './hash.json';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -73,6 +74,7 @@ class App extends Component {
                 language: repairManQuestion.mode,
                 response: repairManQuestion[repairManQuestion.mode],
             },
+            hash: hash.hash,
         };
         toast.success('Application Submitted!', {
             position: "top-right",
