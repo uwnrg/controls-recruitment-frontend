@@ -74,7 +74,7 @@ class App extends Component {
                 response: repairManQuestion[repairManQuestion.mode],
             },
         };
-        toast.success('Application Submit!', {
+        toast.success('Application Submitted!', {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: true,
