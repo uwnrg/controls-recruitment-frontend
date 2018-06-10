@@ -76,6 +76,7 @@ class App extends Component {
                 response: repairManQuestion[repairManQuestion.mode],
             },
             hash: hash.hash,
+            timestamp: Date.now(),
         };
         $.ajax({
             type: 'POST',
