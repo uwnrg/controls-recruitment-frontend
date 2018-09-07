@@ -13,8 +13,12 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import $ from 'jquery';
 
 function Section(props) {
+    const style = {};
+    if (props.hidden) {
+        style.display = 'none';
+    }
     return (
-        <div className="col-sm-12">
+        <div className="col-sm-12" style={style}>
             <h2>{props.title}
                 <Button
                     onClick={props.onSaveClick}
@@ -34,6 +38,7 @@ function Question(props) {
         <Section
             title={"Question " + props.number}
             onSaveClick={props.onSaveClick}
+            hidden={props.hidden}
         >
             {props.children}
         </Section>
@@ -183,8 +188,8 @@ class App extends Component {
                             <p>
                                 Welcome to the 2018 UWNRG Controls application!
                                 This is the specific application for those interested
-                                in the controls team. Keep in mind you must still submit
-                                the general application <a>here</a>.
+                                in the controls team. Keep in mind that you do NOT
+                                need to submit the general application.
                             </p>
                             <p>
                                 You can submit multiple applications, and we will use
@@ -201,10 +206,10 @@ class App extends Component {
                         <Question number={1} onSaveClick={this.saveForm}>
                             <ShapeQuestion ref={(r) => { this.shapeQuestion = r; }} />
                         </Question>
-                        <Question number={2} onSaveClick={this.saveForm}>
+                        <Question number={2} onSaveClick={this.saveForm} hidden={true}>
                             <ControlQuestion ref={(r) => { this.controlQuestion = r; }} />
                         </Question>
-                        <Question number={3} onSaveClick={this.saveForm}>
+                        <Question number={3} onSaveClick={this.saveForm} hidden={true}>
                             <RepairManQuestion ref={(r) => { this.repairManQuestion = r; }} />
                         </Question>
                         <div className="col-sm-12">
